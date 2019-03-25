@@ -1,0 +1,50 @@
+<%= form_for @user do |f| %>
+  <%#= form_errors(f) %>
+
+  <fieldset>
+    <legend>User</legend>
+    <p>
+      <%= f.label :identifier, 'Номер карточки' %><br>
+      <%= f.number_field :identifier %>
+    </p>
+    <p>
+      <%= f.label :first_name, 'Имя' %><br>
+      <%= f.text_field :first_name %>
+    </p>
+    <p>
+      <%= f.label :middle_name, 'Фамилия' %><br>
+      <%= f.text_field :middle_name %>
+    </p>
+    <p>
+      <%= f.label :last_name, 'Отчество' %><br>
+      <%= f.text_field :last_name %>
+    </p>
+    <p>
+      <%= f.label :age, 'Возраст' %><br>
+      <%= f.number_field :age %>
+    </p>
+    <p>
+      <%= f.label :address, 'Адрес' %><br>
+      <%= f.text_field :address %>
+    </p>
+    <p>
+      <%= f.label :phone, 'Телефон' %><br>
+      <%= f.telephone_field :phone %>
+    </p>
+    <p>
+      <%= f.label :diagnosis, 'Диагноз' %><br>
+      <%= f.text_area :diagnosis %>
+    </p>
+    <p>
+      <%= f.label :date_operation, 'Дата операции' %><br>
+      <%= f.date_field :date_operation %>
+    </p>
+    <p>
+      <%= f.label :interval, 'Явиться' %><br>
+      <%= f.date_field :interval %>
+    </p>
+
+  </fieldset>
+
+  <%= f.submit 'Сохранить', class: 'positive ui button' %>
+<% end %>
