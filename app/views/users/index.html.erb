@@ -9,6 +9,7 @@
       <p><b>Возраст</b> <%= user.age %></p>
       <p><b>Диагноз</b> <%= user.diagnosis %></p>
       <p><b>Дата операции</b> <%= user.date_operation %></p>
+      <p><%= link_to 'Изменить данные пациента', edit_user_path(user) %></p>
     </li>
   <% end %>
 </ol>

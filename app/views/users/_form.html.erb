@@ -43,8 +43,8 @@
       <%= f.label :interval, 'Явиться' %><br>
       <%= f.date_field :interval %>
     </p>
-
   </fieldset>
 
   <%= f.submit 'Сохранить', class: 'positive ui button' %>
+  <p><%= link_to 'Вернуться на главную', users_path %></p>
 <% end %>
