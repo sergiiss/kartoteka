@@ -1,39 +1,26 @@
 development:
-  adapter: mysql2
-  encoding: utf8mb4
-  reconnect: false
+  adapter: postgresql
+  encoding: unicode
   database: kartoteka
   pool: 5
-  username: root
+  username: sergei
   password:
-  host: 127.0.0.1
+
+test: &TEST
+  adapter: postgresql
+  encoding: unicode
+  database: kartoteka
+  pool: 5
+  username: sergei
+  password:
 
 production:
-  adapter: mysql2
-  encoding: utf8mb4
-  reconnect: false
+  adapter: postgresql
+  encoding: unicode
   database: kartoteka
   pool: 5
-  username: root
+  username: sergei
   password:
-  host: 127.0.0.1
 
-staging:
-  adapter: mysql2
-  encoding: utf8mb4
-  reconnect: false
-  database: kartoteka
-  pool: 5
-  username: root
-  password:
-  host: 127.0.0.1
-
-test:
-  adapter: mysql2
-  encoding: utf8mb4
-  reconnect: false
-  database: kartoteka
-  pool: 5
-  username: root
-  password:
-  host: 127.0.0.1
+cucumber:
+  <<: *TEST
