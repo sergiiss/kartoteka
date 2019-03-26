@@ -1,50 +1,61 @@
 <%= form_for @user do |f| %>
-  <%#= form_errors(f) %>
+  <div class="row">
+    <div class="col">
+      <%= f.label :identifier, 'Номер карточки' %>
+      <%= f.number_field :identifier, class: "form-control", placeholder: "Номер карточки" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= f.label :first_name, 'Имя' %>
+      <%= f.text_field :first_name, class: "form-control", placeholder: 'Имя' %>
+    </div>
+    <div class="col">
+      <%= f.label :middle_name, 'Фамилия' %>
+      <%= f.text_field :middle_name, class: "form-control", placeholder: 'Фамилия' %>
+    </div>
+    <div class="col">
+      <%= f.label :last_name, 'Отчество' %>
+      <%= f.text_field :last_name, class: "form-control", placeholder: 'Отчество' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= f.label :age, 'Возраст' %>
+      <%= f.number_field :age, class: "form-control", placeholder: "Номер карточки" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= f.label :address, 'Адрес' %>
+      <%= f.text_field :address, class: "form-control", placeholder: "Адрес" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= f.label :phone, 'Телефон' %>
+      <%= f.telephone_field :phone, class: "form-control", placeholder: "Телефон", data: {format: "+375 (ddd) ddd-dd-dd"} %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= f.label :diagnosis, 'Диагноз' %>
+      <%= f.text_area :diagnosis, class: "form-control", placeholder: "Диагноз" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= f.label :date_operation, 'Дата операции' %>
+      <%= f.date_field :date_operation, class: "form-control", placeholder: "Дата операции" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= f.label :interval, 'Дата явки' %>
+      <%= f.date_field :interval, class: "form-control", placeholder: "Дата явки" %>
+    </div>
+  </div>
 
-  <fieldset>
-    <legend>User</legend>
-    <p>
-      <%= f.label :identifier, 'Номер карточки' %><br>
-      <%= f.number_field :identifier %>
-    </p>
-    <p>
-      <%= f.label :first_name, 'Имя' %><br>
-      <%= f.text_field :first_name %>
-    </p>
-    <p>
-      <%= f.label :middle_name, 'Фамилия' %><br>
-      <%= f.text_field :middle_name %>
-    </p>
-    <p>
-      <%= f.label :last_name, 'Отчество' %><br>
-      <%= f.text_field :last_name %>
-    </p>
-    <p>
-      <%= f.label :age, 'Возраст' %><br>
-      <%= f.number_field :age %>
-    </p>
-    <p>
-      <%= f.label :address, 'Адрес' %><br>
-      <%= f.text_field :address %>
-    </p>
-    <p>
-      <%= f.label :phone, 'Телефон' %><br>
-      <%= f.telephone_field :phone %>
-    </p>
-    <p>
-      <%= f.label :diagnosis, 'Диагноз' %><br>
-      <%= f.text_area :diagnosis %>
-    </p>
-    <p>
-      <%= f.label :date_operation, 'Дата операции' %><br>
-      <%= f.date_field :date_operation %>
-    </p>
-    <p>
-      <%= f.label :interval, 'Явиться' %><br>
-      <%= f.date_field :interval %>
-    </p>
-  </fieldset>
-
-  <%= f.submit 'Сохранить', class: 'positive ui button' %>
-  <p><%= link_to 'Вернуться на главную', users_path %></p>
+  <%= f.submit 'Сохранить', class: 'btn btn-primary' %>
+<!--  <p><%#= link_to 'Вернуться на главную', users_path %></p>-->
 <% end %>
