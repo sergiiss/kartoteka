@@ -5,6 +5,7 @@ development:
   pool: 5
   username: sergei
   password:
+  port: 5432
 
 test: &TEST
   adapter: postgresql
@@ -13,7 +14,8 @@ test: &TEST
   pool: 5
   username: sergei
   password:
-
+  port: 5432
+  
 production:
   adapter: postgresql
   encoding: unicode
@@ -21,6 +23,7 @@ production:
   pool: 5
   username: sergei
   password:
+  port: 5432
 
 cucumber:
   <<: *TEST
