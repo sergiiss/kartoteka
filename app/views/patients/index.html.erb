@@ -1,0 +1,15 @@
+<%= link_to 'Добавить пациента', new_patient_path %>
+
+<ol>
+  <% @patients.each do |patient| %>
+    <li>
+      <p><b>Имя</b> <%= patient.first_name %></p>
+      <p><b>Фамилия</b> <%= patient.middle_name %></p>
+      <p><b>Отчество</b> <%= patient.last_name %></p>
+      <p><b>Возраст</b> <%= patient.age %></p>
+      <p><b>Диагноз</b> <%= patient.diagnosis %></p>
+      <p><b>Дата операции</b> <%= patient.operation_date %></p>
+      <p><%= link_to 'Изменить данные пациента', edit_patient_path(patient) %></p>
+    </li>
+  <% end %>
+</ol>

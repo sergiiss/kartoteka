@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20190325192700) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "users", force: :cascade do |t|
+  create_table "patients", force: :cascade do |t|
     t.integer "identifier"
     t.string "first_name", limit: 50
     t.string "middle_name", limit: 50
@@ -24,8 +24,9 @@ ActiveRecord::Schema.define(version: 20190325192700) do
     t.string "address"
     t.string "phone", limit: 20
     t.text "diagnosis"
-    t.datetime "date_operation"
-    t.datetime "interval"
+    t.datetime "operation_date"
+    t.datetime "visit_date"
+    t.integer "interval"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
