@@ -64,9 +64,14 @@
   <div class="form-group row">
     <%= f.label :interval, 'Дата явки', class: "col-sm-2 col-form-label" %>
     <div class="col-sm-1">
-      <%= f.select :interval, (1..12), class: "form-control foo", placeholder: 'Дата явки' %>
+      <%= f.select :interval, 1..12, class: "form-control foo", placeholder: 'Дата явки' %>
     </div>
   </div>
-
-  <%= f.submit 'Сохранить', class: 'btn btn-primary' %>
+  <div class="form-group row">
+    <%= label_tag '', '', class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-6">
+      <%= f.submit 'Сохранить', class: 'btn btn-primary btn-lg' %>
+      <%= link_to 'Назад', patients_path, class: 'btn btn-secondary btn-lg' %>
+    </div>
+  </div>
 <% end %>

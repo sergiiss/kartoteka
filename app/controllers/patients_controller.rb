@@ -2,7 +2,7 @@ class PatientsController < ApplicationController
   before_action :find_patient, only: [:edit, :update, :destroy]
 
   def index
-    @patients = Patient.all
+    @patients = Patient.all.order(:visit_date)
   end
 
   def new
@@ -20,8 +20,7 @@ class PatientsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @patient.update_attributes(allowed_params)

@@ -1,15 +1,38 @@
-<%= link_to 'Добавить пациента', new_patient_path %>
+<%= link_to 'Добавить пациента', new_patient_path, class: 'btn btn-success', style: 'margin-bottom: 20px;' %>
 
-<ol>
-  <% @patients.each do |patient| %>
-    <li>
-      <p><b>Имя</b> <%= patient.first_name %></p>
-      <p><b>Фамилия</b> <%= patient.middle_name %></p>
-      <p><b>Отчество</b> <%= patient.last_name %></p>
-      <p><b>Возраст</b> <%= patient.age %></p>
-      <p><b>Диагноз</b> <%= patient.diagnosis %></p>
-      <p><b>Дата операции</b> <%= patient.operation_date %></p>
-      <p><%= link_to 'Изменить данные пациента', edit_patient_path(patient) %></p>
-    </li>
+<table class="table">
+  <thead class="thead-inverse">
+  <tr>
+    <th>#</th>
+    <th>Номер карточки</th>
+    <th>Фамилия</th>
+    <th>Имя</th>
+    <th>Отчество</th>
+    <th>Возраст</th>
+    <th>Адрес</th>
+    <th>Телефон</th>
+    <th>Дата операции</th>
+    <th>Дата приёма</th>
+    <th>Дата явки</th>
+    <th>Обновить данные</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @patients.each_with_index do |patient, index| %>
+    <tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td><%= patient.identifier %></td>
+      <td><%= patient.middle_name %></td>
+      <td><%= patient.first_name %></td>
+      <td><%= patient.last_name %></td>
+      <td><%= patient.age %></td>
+      <td><%= patient.address %></td>
+      <td><%= patient.phone %></td>
+      <td><%= patient.operation_date.try(:strftime, "%d.%m.%Y") %></td>
+      <td><%= patient.visit_date.try(:strftime, "%d.%m.%Y") %></td>
+      <td><%= patient.visit_date + patient.interval * 30 %></td>
+      <td><%= link_to 'Обновить', edit_patient_path(patient), class: 'btn btn-success btn-sm' %></td>
+    </tr>
   <% end %>
-</ol>
+  </tbody>
+</table>

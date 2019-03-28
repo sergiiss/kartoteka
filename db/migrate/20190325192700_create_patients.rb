@@ -9,8 +9,8 @@ class CreatePatients < ActiveRecord::Migration[5.1]
       t.string :address
       t.string :phone, limit: 20
       t.text :diagnosis
-      t.datetime :operation_date
-      t.datetime :visit_date
+      t.date :operation_date
+      t.date :visit_date
       t.integer :interval
 
       t.timestamps
