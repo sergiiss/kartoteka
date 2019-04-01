@@ -11,7 +11,7 @@ class CreatePatients < ActiveRecord::Migration[5.1]
       t.text :diagnosis
       t.date :operation_date
       t.date :visit_date
-      t.integer :interval
+      t.date :next_visit_date
 
       t.timestamps
     end

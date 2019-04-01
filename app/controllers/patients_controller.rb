@@ -2,7 +2,7 @@ class PatientsController < ApplicationController
   before_action :find_patient, only: [:edit, :update, :destroy]
 
   def index
-    @patients = Patient.all.order(:visit_date)
+    @patients = Patient.all.order(:next_visit_date)
   end
 
   def new
@@ -54,7 +54,7 @@ class PatientsController < ApplicationController
       :diagnosis,
       :operation_date,
       :visit_date,
-      :interval
+      :next_visit_date
     )
   end
 end

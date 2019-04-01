@@ -8,15 +8,15 @@
     </div>
   </div>
   <div class="form-group row">
-    <%= f.label :first_name, 'Имя', class: "col-sm-2 col-form-label" %>
-    <div class="col-sm-3">
-      <%= f.text_field :first_name, class: "form-control", placeholder: 'Имя' %>
-    </div>
-  </div>
-  <div class="form-group row">
     <%= f.label :middle_name, 'Фамилия', class: "col-sm-2 col-form-label" %>
     <div class="col-sm-3">
       <%= f.text_field :middle_name, class: "form-control", placeholder: 'Фамилия' %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :first_name, 'Имя', class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-3">
+      <%= f.text_field :first_name, class: "form-control", placeholder: 'Имя' %>
     </div>
   </div>
   <div class="form-group row">
@@ -62,9 +62,10 @@
     </div>
   </div>
   <div class="form-group row">
-    <%= f.label :interval, 'Дата явки', class: "col-sm-2 col-form-label" %>
+    <%= f.label :next_visit_date, 'Дата явки', class: "col-sm-2 col-form-label" %>
     <div class="col-sm-1">
-      <%= f.select :interval, 1..12, class: "form-control foo", placeholder: 'Дата явки' %>
+      <%= select_tag 'interval', options_for_select(1..12), class: "form-control interval", placeholder: 'Дата явки' %>
+      <%= f.hidden_field :next_visit_date, value: '' %>
     </div>
   </div>
   <div class="form-group row">

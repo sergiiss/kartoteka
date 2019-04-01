@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 20190325192700) do
     t.string "address"
     t.string "phone", limit: 20
     t.text "diagnosis"
-    t.datetime "operation_date"
-    t.datetime "visit_date"
-    t.integer "interval"
+    t.date "operation_date"
+    t.date "visit_date"
+    t.date "next_visit_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
