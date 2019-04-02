@@ -32,6 +32,7 @@ class PatientsController < ApplicationController
 
   def destroy
     @patient.destroy
+    flash.notice = 'Ваш пациент успешно удален'
 
     redirect_to patients_path
   end

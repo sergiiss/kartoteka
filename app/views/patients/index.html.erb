@@ -1,5 +1,9 @@
 <%= link_to 'Добавить пациента', new_patient_path, class: 'btn btn-success', style: 'margin-bottom: 20px;' %>
 
+<% flash.each do |key, message| %>
+  <div class="alert alert-success <%= key %>" role="alert"><%= message %></div>
+<% end %>
+
 <table class="table">
   <thead class="thead-inverse">
   <tr>
@@ -33,7 +37,7 @@
       <td><%= patient.next_visit_date.try(:strftime, "%d.%m.%Y") %></td>
       <td>
         <%= link_to 'Обновить', edit_patient_path(patient), class: 'btn btn-sm btn-success' %>
-        <%= link_to 'Удалить', patient_path(patient), method: 'delete', class: 'btn btn-sm btn-danger delete-patient' %>
+        <%= link_to 'Удалить', patient, method: 'delete', data: { confirm: 'Вы действительно хотите удалить?'}, class: 'btn btn-sm btn-danger delete-patient' %>
       </td>
     </tr>
   <% end %>

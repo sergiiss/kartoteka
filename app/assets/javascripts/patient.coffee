@@ -23,6 +23,6 @@ $ ->
     placement: 'bottom'
   })
 
-  $(document).on 'click', '.delete-patient', ->
-    confirm "Are you sure want to delete?"
-
+  setTimeout (->
+    $('.alert.alert-success').fadeOut()
+  ), 2500
