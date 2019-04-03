@@ -9,9 +9,19 @@ $ ->
     D.setMonth(D.getMonth() + Number(target.val()));
     $('#patient_next_visit_date').val(D)
 
-  $(document).on 'page:load', ->
-    if $('#interval').length
-      nextVisitDate($('#interval'))
+  setNextDate = ->
+    visitDate = $('#patient_visit_date').val();
+    D = new Date(visitDate);
+    nextVisit = $('#patient_next_visit_date').val()
+    N = new Date(nextVisit)
+    yearInterval = (N.getFullYear() - D.getFullYear()) * 12
+    currentInterval = N.getMonth() - D.getMonth()
+    $('#interval').val(yearInterval + currentInterval)
+
+  $(document).on 'turbolinks:load', ->
+    setNextDate()
+
+  setNextDate()
 
   $(document).on 'change', '#interval', ->
     nextVisitDate($(this))
@@ -19,10 +29,15 @@ $ ->
   $(document).on 'change', '#patient_visit_date', ->
     nextVisitDate($('#interval'))
 
+  setTimeout (->
+    $('.alert.alert-success').fadeOut()
+  ), 2500
+
   $('.diagnosis').tooltip({
     placement: 'bottom'
   })
 
-  setTimeout (->
-    $('.alert.alert-success').fadeOut()
-  ), 2500
+  $(document).on 'turbolinks:load', ->
+    $('.diagnosis').tooltip({
+      placement: 'bottom'
+    })
