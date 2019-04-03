@@ -1,0 +1,39 @@
+<table class="table">
+  <thead class="thead-inverse">
+  <tr>
+    <th>#</th>
+    <th>Номер карточки</th>
+    <th>Фамилия</th>
+    <th>Имя</th>
+    <th>Отчество</th>
+    <th>Возраст</th>
+    <th>Адрес</th>
+    <th>Телефон</th>
+    <th>Дата операции</th>
+    <th>Дата приёма</th>
+    <th>Дата явки</th>
+    <th>Обновить данные</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @patients.each_with_index do |patient, index| %>
+    <tr style="<%= 'background-color: #74d682;' if patient.current_month? && current_page?(patients_path) %>">
+      <th scope="row"><%= index + 1 %></th>
+      <td><%= patient.identifier %></td>
+      <td><%= patient.middle_name %></td>
+      <td><%= patient.first_name %></td>
+      <td><%= patient.last_name %></td>
+      <td><%= patient.age %></td>
+      <td><%= patient.address %></td>
+      <td><%= patient.phone %></td>
+      <td class="diagnosis" title="<%= patient.diagnosis %>"><%= patient.operation_date.try(:strftime, "%d.%m.%Y") %></td>
+      <td><%= patient.visit_date.try(:strftime, "%d.%m.%Y") %></td>
+      <td><%= patient.next_visit_date.try(:strftime, "%d.%m.%Y") %></td>
+      <td>
+        <%= link_to 'Обновить', edit_patient_path(patient), class: 'btn btn-sm btn-success' %>
+        <%= link_to 'Удалить', patient, method: 'delete', data: { confirm: 'Вы действительно хотите удалить?'}, class: 'btn btn-sm btn-danger delete-patient' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

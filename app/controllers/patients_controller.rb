@@ -5,6 +5,10 @@ class PatientsController < ApplicationController
     @patients = Patient.all.order(:next_visit_date)
   end
 
+  def current
+    @patients = Patient.order(:next_visit_date).current_month
+  end
+
   def new
     @patient = Patient.new
   end
