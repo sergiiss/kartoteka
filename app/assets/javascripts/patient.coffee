@@ -30,8 +30,8 @@ $ ->
     nextVisitDate($('#interval'))
 
   setTimeout (->
-    $('.alert.alert-success').fadeOut()
-  ), 2500
+    $('.alert').fadeOut()
+  ), 4000
 
   $('.diagnosis').tooltip({
     placement: 'bottom'
