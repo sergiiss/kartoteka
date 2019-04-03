@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <%= link_to 'Добавить пациента', new_patient_path, class: 'btn btn-success', style: 'margin-bottom: 20px;' %>
-  <%= link_to 'Прием в текущем месяце', current_patients_path, class: 'btn btn-success', style: 'margin-bottom: 20px;' %>
+  <%= link_to 'Прием в текущем месяце', root_path, class: 'btn btn-success', style: 'margin-bottom: 20px;' %>
 
   <% flash.each do |key, message| %>
     <div class="alert alert-success <%= key %>" role="alert"><%= message %></div>
