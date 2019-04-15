@@ -17,7 +17,7 @@
   </thead>
   <tbody>
   <% @patients.each_with_index do |patient, index| %>
-    <tr style="<%= 'background-color: #74d682;' if patient.current_month? && current_page?(patients_path) %>">
+    <tr style="<%= 'background-color: #e0fced;' if patient.current_month? && current_page?(patients_path) %>">
       <th scope="row"><%= index + 1 %></th>
       <td><%= patient.identifier %></td>
       <td><%= patient.middle_name %></td>
@@ -29,7 +29,7 @@
       <td class="diagnosis" title="<%= patient.diagnosis %>"><%= patient.operation_date.try(:strftime, "%d.%m.%Y") %></td>
       <td><%= patient.visit_date.try(:strftime, "%d.%m.%Y") %></td>
       <td><%= patient.next_visit_date.try(:strftime, "%d.%m.%Y") %></td>
-      <td>
+      <td style="width: 200px;">
         <%= link_to 'Обновить', edit_patient_path(patient), class: 'btn btn-sm btn-success' %>
         <%= link_to 'Удалить', patient, method: 'delete', data: { confirm: 'Вы действительно хотите удалить?'}, class: 'btn btn-sm btn-danger delete-patient' %>
       </td>
