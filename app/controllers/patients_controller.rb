@@ -4,7 +4,7 @@ class PatientsController < ApplicationController
   def index
     @patients =
       if params[:q]
-        Patient.where(middle_name: params[:q])
+        Patient.where('middle_name ILIKE ?', "%#{params[:q]}%")
       else
         Patient.all.order(:next_visit_date)
       end
