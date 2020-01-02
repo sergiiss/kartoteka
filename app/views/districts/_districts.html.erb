@@ -1,0 +1,27 @@
+<table class="table">
+  <thead class="thead-inverse">
+  <tr>
+    <th>#</th>
+    <th>Учреждение Здравоохранения</th>
+    <th>Дата приказа проверки</th>
+    <th>Дата исполнения</th>
+    <th>Выполнено/Не выполнено</th>
+    <th>Обновить данные</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @districts.each.with_index(1) do |district, index| %>
+    <tr style="<%= 'background-color: #e0fced;' if district.current_month? && current_page?(districts_path) %>">
+      <th scope="row"><%= index %></th>
+      <td><%= district.name %></td>
+      <td><%= district.decree_date.try(:strftime, "%d.%m.%Y") %></td>
+      <td><%= district.completion_date.try(:strftime, "%d.%m.%Y") %></td>
+      <td><%= district.performed %></td>
+      <td style="width: 200px;">
+        <%= link_to 'Обновить', edit_district_path(district), class: 'btn btn-sm btn-success' %>
+        <%= link_to 'Удалить', district, method: 'delete', data: { confirm: 'Вы действительно хотите удалить?'}, class: 'btn btn-sm btn-danger delete-patient' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

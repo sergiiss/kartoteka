@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <%= link_to 'Добавить УЗ', new_district_path, class: 'btn btn-success', style: 'margin-bottom: 20px;' %>
+  <div style="float: right">
+    <%= link_to 'Выход', destroy_user_session_path, method: :delete, class: 'btn btn-secondary' %>
+  </div>
+  <%= form_for District.new, url: '/districts', method: :get, html: { class: 'form-inline md-form form-sm active-cyan active-cyan-2 mt-2' } do %>
+    <i class="fas fa-search" aria-hidden="true"></i>
+    <input class="form-control form-control-sm w-25 search-input" name="q" id="q" type="text" placeholder="Введите название УЗ" aria-label="Search">
+  <% end %>
+  <br />
+
+  <%= render 'districts' %>
+</div>
+
+<% if params[:q] %>
+  <%= link_to 'Показать все УЗ', districts_path, class: 'btn btn-primary', style: 'margin-left: 15px;' %>
+<% end %>

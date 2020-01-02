@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :patients do
     get 'current', on: :collection
   end
+  resources :districts do
+    get 'alternative', on: :collection
+  end
 
-  root to: 'patients#current'
+  root to: 'districts#alternative'
 end
