@@ -2,6 +2,8 @@ class Decree < ApplicationRecord
   belongs_to :quality_control
   has_many :paragraphs
 
+  validates :name, presence: true
+
   OPTION = ['По решению УЗО, МЗРБ', 'По предложение МРЭК'].freeze
 
   enum option: OPTION

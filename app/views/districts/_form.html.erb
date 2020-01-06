@@ -9,7 +9,9 @@
   <%= form_error_viewer(f) %>
 
   <div class="form-group row">
-    <%= f.label :name, 'Учреждение Здравоохранения', class: "col-sm-3 col-form-label" %>
+    <div class="col-sm-3 col-form-label">
+      <%= f.label :name, 'Учреждение Здравоохранения' %>
+    </div>
     <div class="col-sm-6">
       <%= f.text_area :name, class: "form-control", placeholder: 'Учреждение Здравоохранения', size: '20x5' %>
     </div>

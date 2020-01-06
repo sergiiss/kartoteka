@@ -16,7 +16,9 @@
       </div>
     </div>
     <div class="form-group row">
-      <%= f.label :name, 'Название приказа', class: "col-sm-3 col-form-label" %>
+      <div class="col-sm-3 col-form-label">
+        <%= f.label :name, 'Название приказа' %>
+      </div>
       <div class="col-sm-5">
         <%= f.text_area :name, class: "form-control", placeholder: 'Название приказа' %>
       </div>

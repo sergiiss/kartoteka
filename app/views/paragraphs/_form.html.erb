@@ -10,7 +10,9 @@
 
     <%= f.hidden_field :decree_id, value: @decree.id %>
     <div class="form-group row">
-      <%= f.label :todo, 'Необходимо выполнить', class: "col-sm-3 col-form-label" %>
+      <div class="col-sm-3 col-form-label">
+        <%= f.label :todo, 'Необходимо выполнить' %>
+      </div>
       <div class="col-sm-6">
         <%= f.text_area :todo, class: 'form-control', placeholder: 'Необходимо выполнить' %>
       </div>
