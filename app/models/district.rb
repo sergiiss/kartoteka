@@ -1,14 +1,10 @@
 class District < ApplicationRecord
-  validates :name, :decree_date, :completion_date, :performed, presence: true
+  has_many :quality_controls
+  accepts_nested_attributes_for :quality_controls, allow_destroy: true
 
-  enum performed: ['Не выполнено', 'Выполнено']
+  validates :name, presence: true
 
-  def current_month?
-    current_year = Date.today.year
-    next_visit_year = completion_date.year
-
-    return if current_year != next_visit_year
-
-    true if Date.today.month == completion_date.month
-  end
+  scope :not_completed, -> { includes(quality_controls: {decrees: :paragraphs})
+                               .where('paragraphs.completion_date < ?', Date.current)
+                               .where('paragraphs.performed': 0) }
 end

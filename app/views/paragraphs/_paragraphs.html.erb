@@ -1,0 +1,25 @@
+<table class="table">
+  <thead class="thead-inverse">
+  <tr>
+    <th>#</th>
+    <th>Пункт приказа</th>
+    <th>Срок исполнения</th>
+    <th>Выполнено/Не выполнено</th>
+    <th>Обновить данные</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @paragraphs.each.with_index(1) do |paragraph, index| %>
+    <tr>
+      <th scope="row"><%= index %></th>
+      <td><%= link_to paragraph.name, district_quality_control_decree_paragraph_path(@district, @quality_control, @decree, paragraph) %></td>
+      <td><%= paragraph.completion_date %></td>
+      <td><%= paragraph.performed %></td>
+      <td style="width: 200px;">
+        <%= link_to 'Обновить', edit_district_quality_control_decree_paragraph_path(@district, @quality_control, @decree, paragraph), class: 'btn btn-sm btn-success' %>
+        <%= link_to 'Удалить', district_quality_control_decree_paragraph_path(@district, @quality_control, @decree, paragraph), method: 'delete', data: { confirm: 'Вы действительно хотите удалить?'}, class: 'btn btn-sm btn-danger delete-patient' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

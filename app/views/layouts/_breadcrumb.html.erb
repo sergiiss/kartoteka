@@ -1,0 +1,40 @@
+<% if action_name != 'alternative' && controller.class != PatientsController %>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <% if controller.class == DistrictsController && action_name == 'index' %>
+          <span>Главная страница</span>
+        <% else %>
+          <%= link_to 'Главная страница', districts_path %>
+        <% end %>
+      </li>
+      <% if (controller.class == DistrictsController && action_name != 'index') || params[:district_id] %>
+        <li class="breadcrumb-item">
+          <% if controller.class == DistrictsController %>
+            <span>Учреждение здравоохранения</span>
+          <% else %>
+            <%= link_to 'Учреждение здравоохранения', district_path(@district) %>
+          <% end %>
+        </li>
+      <% end %>
+      <% if controller.class == QualityControlsController || params[:quality_control_id] %>
+        <li class="breadcrumb-item">
+          <% if controller.class == QualityControlsController %>
+            <span>Оценка качества</span>
+          <% else %>
+            <%= link_to 'Оценка качества', district_quality_control_path(@district, @quality_control) %>
+          <% end %>
+        </li>
+      <% end %>
+      <% if controller.class == DecreesController || params[:decree_id] %>
+        <li class="breadcrumb-item">
+          <% if controller.class == DecreesController %>
+            <span>Приказ</span>
+          <% else %>
+            <%= link_to 'Приказ', district_quality_control_decree_path(@district, @quality_control, @decree) %>
+          <% end %>
+        </li>
+      <% end %>
+    </ol>
+  </nav>
+<% end %>

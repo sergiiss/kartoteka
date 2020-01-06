@@ -1,0 +1,51 @@
+<table class="table table-info">
+  <thead class="thead-inverse">
+  <tr>
+    <th>Название Учреждения Здравоохранения</th>
+    <th>Телефон</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= @district.name %></td>
+    <td><%= @district.phone %></td>
+  </tr>
+  </tbody>
+</table>
+<%= link_to 'Добавить ОК', new_district_quality_control_path(@district), class: 'btn btn-success', style: 'margin-bottom: 20px;' %>
+<br />
+<br />
+
+<% if @quality_controls.present? %>
+  <h2>Оценки качества</h2>
+
+  <table class="table">
+    <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Название оценки качества</th>
+      <th>Дата прихода</th>
+      <th>Обновить данные</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @quality_controls.each.with_index(1) do |qa, index| %>
+      <tr class="<%= 'not-completed' if @not_completed_quality_control_ids.include?(qa.id) %>">
+        <th scope="row"><%= index %></th>
+        <td class="link-scope"><%= link_to qa.name, district_quality_control_path(@district, qa) %></td>
+        <td><%= qa.decree_date %></td>
+        <td class="buttons-block">
+          <%= link_to 'Обновить', edit_district_quality_control_path(@district, qa), class: 'btn btn-sm btn-success' %>
+          <%= link_to 'Удалить', district_quality_control_path(@district, qa), method: 'delete', data: { confirm: 'Вы действительно хотите удалить?'}, class: 'btn btn-sm btn-danger delete-patient' %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <br />
+  <br />
+  <div class="alert alert-warning" role="alert" style="text-align: center;">
+    <h3 class="alert-heading">Кажется, нет ни одной оценки качества, пожалуйста, создайте ее.</h3>
+  </div>
+<% end %>

@@ -1,0 +1,23 @@
+<table class="table">
+  <thead class="thead-inverse">
+  <tr>
+    <th>#</th>
+    <th>Название оказания помощи</th>
+    <th>Срок исполнения</th>
+    <th>Обновить данные</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @quality_controls.each.with_index(1) do |quality_control, index| %>
+    <tr>
+      <th scope="row"><%= index %></th>
+      <td><%= link_to quality_control.name, district_quality_control_path(@district, quality_control) %></td>
+      <td><%= quality_control.decree_date %></td>
+      <td style="width: 200px;">
+        <%= link_to 'Обновить', edit_district_quality_control_path(@district, quality_control), class: 'btn btn-sm btn-success' %>
+        <%= link_to 'Удалить', district_quality_control_path(@district, quality_control), method: 'delete', data: { confirm: 'Вы действительно хотите удалить?'}, class: 'btn btn-sm btn-danger delete-patient' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

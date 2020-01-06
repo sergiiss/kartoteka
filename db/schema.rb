@@ -10,18 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200102115300) do
+ActiveRecord::Schema.define(version: 20200103201710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "districts", force: :cascade do |t|
-    t.string "name", limit: 200
-    t.date "decree_date"
-    t.date "completion_date"
-    t.integer "performed", default: 0
+  create_table "decrees", force: :cascade do |t|
+    t.integer "identifier"
+    t.string "name"
+    t.date "date"
+    t.integer "option", default: 0
+    t.bigint "quality_control_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["quality_control_id"], name: "index_decrees_on_quality_control_id"
+  end
+
+  create_table "districts", force: :cascade do |t|
+    t.string "name"
+    t.string "phone", limit: 30
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "paragraphs", force: :cascade do |t|
+    t.date "completion_date"
+    t.text "todo"
+    t.integer "performed", default: 0
+    t.bigint "decree_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decree_id"], name: "index_paragraphs_on_decree_id"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -38,6 +57,15 @@ ActiveRecord::Schema.define(version: 20200102115300) do
     t.date "next_visit_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "quality_controls", force: :cascade do |t|
+    t.date "decree_date"
+    t.string "name"
+    t.bigint "district_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["district_id"], name: "index_quality_controls_on_district_id"
   end
 
   create_table "users", force: :cascade do |t|

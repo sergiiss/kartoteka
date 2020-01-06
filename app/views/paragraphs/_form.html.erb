@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>Создать Пункт приказа</h3><br />
+    </div>
+  </div>
+
+  <%= form_for [@district, @quality_control, @decree, @paragraph] do |f| %>
+    <%= form_error_viewer(f) %>
+
+    <%= f.hidden_field :decree_id, value: @decree.id %>
+    <div class="form-group row">
+      <%= f.label :todo, 'Необходимо выполнить', class: "col-sm-3 col-form-label" %>
+      <div class="col-sm-4">
+        <%= f.text_area :todo, class: "form-control", placeholder: 'Название' %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :completion_date, 'Срок исполнения', class: "col-sm-3 col-form-label" %>
+      <div class="col-sm-4">
+        <%= f.date_field :completion_date, class: "form-control", placeholder: 'Название' %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :performed, 'Выполнено/Не выполнено', class: "col-sm-3 col-form-label" %>
+      <div class="col-sm-4">
+        <%= f.select :performed, Paragraph::OPTION_FOR_SELECT, class: "form-control", placeholder: 'Название' %>
+      </div>
+    </div>
+    <div lass="form-group row">
+      <%= label_tag '', '', class: "col-sm-3 col-form-label" %>
+      <div class="col-sm-6">
+        <%= f.submit 'Сохранить', class: 'btn btn-primary btn-lg' %>
+        <%= link_to 'Назад', :back, class: 'btn btn-secondary btn-lg' %>
+      </div>
+    </div>
+  <% end %>
+</div>

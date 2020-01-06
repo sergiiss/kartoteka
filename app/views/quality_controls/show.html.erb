@@ -1,0 +1,55 @@
+<table class="table table-info">
+  <thead class="thead-inverse">
+  <tr>
+    <th>Название Оценки качества</th>
+    <th>Дата прихода</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= @quality_control.name %></td>
+    <td><%= @quality_control.decree_date %></td>
+  </tr>
+  </tbody>
+</table>
+<%= link_to 'Добавить приказ', new_district_quality_control_decree_path(@district, @quality_control), class: 'btn btn-success', style: 'margin-bottom: 20px;' %>
+<br />
+<br />
+
+<% if @decrees.present? %>
+  <h2>Приказы</h2>
+
+  <table class="table">
+    <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Номер приказа</th>
+      <th>Название приказа</th>
+      <th>Дата приказа</th>
+      <th>Вид приказа</th>
+      <th>Обновить данные</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @decrees.each.with_index(1) do |decree, index| %>
+      <tr class="<%= 'not-completed' if @not_completed_decree_ids.include?(decree.id) %>">
+        <th scope="row"><%= index %></th>
+        <td class="link-scope"><%= link_to decree.name, district_quality_control_decree_path(@district, @quality_control, decree) %></td>
+        <td><%= decree.identifier %></td>
+        <td><%= decree.date %></td>
+        <td><%= decree.option %></td>
+        <td class="buttons-block">
+          <%= link_to 'Обновить', edit_district_quality_control_decree_path(@district, @quality_control, decree), class: 'btn btn-sm btn-success' %>
+          <%= link_to 'Удалить', district_quality_control_decree_path(@district, @quality_control, decree), method: 'delete', data: { confirm: 'Вы действительно хотите удалить?'}, class: 'btn btn-sm btn-danger delete-patient' %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <br />
+  <br />
+  <div class="alert alert-warning" role="alert" style="text-align: center;">
+    <h3 class="alert-heading">Кажется, нет ни одного приказа, пожалуйста, создайте приказ.</h3>
+  </div>
+<% end %>

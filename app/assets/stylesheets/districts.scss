@@ -2,3 +2,21 @@
   margin-top: 20%;
   margin-left: 40%;
 }
+
+.not-completed {
+  background: #fbd4d8 !important;
+}
+
+.buttons-block {
+  width: 200px;
+  background: #fff;
+}
+
+.link-scope {
+  cursor: pointer;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}

@@ -1,0 +1,27 @@
+<table class="table">
+  <thead class="thead-inverse">
+  <tr>
+    <th>#</th>
+    <th>Номер приказа</th>
+    <th>Название</th>
+    <th>Дата приказа</th>
+    <th>Вид приказа</th>
+    <th>Обновить данные</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @decrees.each.with_index(1) do |decree, index| %>
+    <tr>
+      <th scope="row"><%= index %></th>
+      <td><%= link_to decree.name, district_quality_control_decree_path(@district, @quality_control, decree) %></td>
+      <td><%= decree.identifier %></td>
+      <td><%= decree.date %></td>
+      <td><%= decree.option %></td>
+      <td style="width: 200px;">
+        <%= link_to 'Обновить', edit_district_quality_control_decree_path(@district, @quality_control, decree), class: 'btn btn-sm btn-success' %>
+        <%= link_to 'Удалить', district_quality_control_decree_path(@district, @quality_control, decree), method: 'delete', data: { confirm: 'Вы действительно хотите удалить?'}, class: 'btn btn-sm btn-danger delete-patient' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

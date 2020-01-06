@@ -1,0 +1,57 @@
+<table class="table table-info">
+  <thead class="thead-inverse">
+  <tr>
+    <th>Номер приказа</th>
+    <th>Название</th>
+    <th>Дата приказа</th>
+    <th>Вид приказа</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @decree.identifier %></td>
+      <td><%= @decree.name %></td>
+      <td><%= @decree.date %></td>
+      <td><%= @decree.option %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to 'Добавить Пункт приказа', new_district_quality_control_decree_paragraph_path(@district, @quality_control, @decree), class: 'btn btn-success', style: 'margin-bottom: 20px;' %>
+<br />
+<br />
+
+<% if @paragraphs.present? %>
+  <h2>Пункты приказа</h2>
+
+  <table class="table">
+    <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>Необходимо выполнить</th>
+      <th>Срок исполнения</th>
+      <th>Выполнено/Не выполнено</th>
+      <th>Обновить данные</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @paragraphs.each.with_index(1) do |paragraph, index| %>
+      <tr class="<%= 'not-completed' if @not_completed_paragraph_ids.include?(paragraph.id) %>">
+        <th scope="row"><%= index %></th>
+        <td><%= paragraph.todo %></td>
+        <td><%= paragraph.completion_date %></td>
+        <td><%= paragraph.performed %></td>
+        <td class="buttons-block">
+          <%= link_to 'Обновить', edit_district_quality_control_decree_paragraph_path(@district, @quality_control, @decree, paragraph), class: 'btn btn-sm btn-success' %>
+          <%= link_to 'Удалить', district_quality_control_decree_paragraph_path(@district, @quality_control, @decree, paragraph), method: 'delete', data: { confirm: 'Вы действительно хотите удалить?'}, class: 'btn btn-sm btn-danger delete-patient' %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <br />
+  <br />
+  <div class="alert alert-warning" role="alert" style="text-align: center;">
+    <h3 class="alert-heading">Кажется, нет ни одного пункта приказа, пожалуйста, создайте необходимые Вам пункты</h3>
+  </div>
+<% end %>

@@ -1,23 +1,30 @@
 class DistrictsController < ApplicationController
-  before_action :find_district, only: [:edit, :update, :destroy]
+  before_action :find_district, only: %i[edit update show destroy]
 
   def index
     @districts =
         if params[:q]
           District.where('name ILIKE ?', "%#{params[:q]}%")
         else
-          District.all.order(:completion_date)
+          District.all.order(:name)
         end
+
+    @not_completed_district_ids = District.not_completed.map(&:id)
   end
 
   def new
     @district = District.new
   end
 
+  def show
+    @quality_controls = @district.quality_controls.order(:name)
+    @not_completed_quality_control_ids = QualityControl.not_completed.map(&:id)
+  end
+
   def create
     @district = District.new(allowed_params)
     if @district.save
-      flash[:notice] = 'УЗ было успешно создано'
+      flash[:notice] = 'Учреждение Здравоохранения было успешно создано'
 
       redirect_to districts_path
     else
@@ -37,7 +44,7 @@ class DistrictsController < ApplicationController
 
   def destroy
     @district.destroy
-    flash[:notice] = 'УЗ успешно удалено'
+    flash[:notice] = 'Учреждение Здравоохранения успешно удалено'
 
     redirect_to districts_path
   end
@@ -49,11 +56,6 @@ class DistrictsController < ApplicationController
   end
 
   def allowed_params
-    params.require(:district).permit(
-        :name,
-        :decree_date,
-        :completion_date,
-        :performed
-    )
+    params.require(:district).permit(:name, :phone)
   end
 end
