@@ -11,29 +11,29 @@
     <%= f.hidden_field :quality_control_id, value: @quality_control.id %>
     <div class="form-group row">
       <%= f.label :identifier, 'Номер приказа', class: "col-sm-3 col-form-label" %>
-      <div class="col-sm-4">
-        <%= f.number_field :identifier, class: "form-control", placeholder: 'Название' %>
+      <div class="col-sm-5">
+        <%= f.number_field :identifier, class: "form-control", placeholder: 'Номер приказа' %>
       </div>
     </div>
     <div class="form-group row">
-      <%= f.label :name, 'Название', class: "col-sm-3 col-form-label" %>
-      <div class="col-sm-4">
-        <%= f.text_field :name, class: "form-control", placeholder: 'Название' %>
+      <%= f.label :name, 'Название приказа', class: "col-sm-3 col-form-label" %>
+      <div class="col-sm-5">
+        <%= f.text_area :name, class: "form-control", placeholder: 'Название приказа' %>
       </div>
     </div>
     <div class="form-group row">
-      <%= f.label :date, 'Название', class: "col-sm-3 col-form-label" %>
-      <div class="col-sm-4">
-        <%= f.date_field :date, class: "form-control", placeholder: 'Название' %>
+      <%= f.label :date, 'Дата приказа', class: "col-sm-3 col-form-label" %>
+      <div class="col-sm-5">
+        <%= f.date_field :date, class: "form-control", placeholder: 'Дата приказа' %>
       </div>
     </div>
     <div class="form-group row">
-      <%= f.label :option, 'Дата ОК', class: "col-sm-3 col-form-label" %>
-      <div class="col-sm-4">
-        <%= f.select :option, Decree::OPTION, class: "form-control", placeholder: 'Дата ОК' %>
+      <%= f.label :option, 'Вид приказа', class: "col-sm-3 col-form-label" %>
+      <div class="col-sm-5">
+        <%= f.select :option, Decree::OPTION, class: "form-control", placeholder: 'Вид приказа' %>
       </div>
     </div>
-    <div lass="form-group row">
+    <div class="form-group row">
       <%= label_tag '', '', class: "col-sm-3 col-form-label" %>
       <div class="col-sm-6">
         <%= f.submit 'Сохранить', class: 'btn btn-primary btn-lg' %>

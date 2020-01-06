@@ -12,19 +12,19 @@
   </tr>
   </tbody>
 </table>
-<%= link_to 'Добавить ОК', new_district_quality_control_path(@district), class: 'btn btn-success', style: 'margin-bottom: 20px;' %>
+<%= link_to 'Добавить ОПМ', new_district_quality_control_path(@district), class: 'btn btn-success', style: 'margin-bottom: 20px;' %>
 <br />
 <br />
 
 <% if @quality_controls.present? %>
-  <h2>Оценки качества</h2>
+  <h2>Основания проведения мониторинга</h2>
 
   <table class="table">
     <thead class="thead-inverse">
     <tr>
       <th>#</th>
-      <th>Название оценки качества</th>
-      <th>Дата прихода</th>
+      <th>Название</th>
+      <th>Дата</th>
       <th>Обновить данные</th>
     </tr>
     </thead>
@@ -46,6 +46,6 @@
   <br />
   <br />
   <div class="alert alert-warning" role="alert" style="text-align: center;">
-    <h3 class="alert-heading">Кажется, нет ни одной оценки качества, пожалуйста, создайте ее.</h3>
+    <h3 class="alert-heading">Кажется, нет ни одного основания, пожалуйста, создайте его.</h3>
   </div>
 <% end %>

@@ -16,7 +16,7 @@ class QualityControlsController < ApplicationController
   def create
     @quality_control = QualityControl.new(allowed_params)
     if @quality_control.save
-      flash[:notice] = 'Оценка качества была успешно создана'
+      flash[:notice] = 'ОПМ было успешно создано'
 
       redirect_to district_path(@district)
     else
@@ -36,7 +36,7 @@ class QualityControlsController < ApplicationController
 
   def destroy
     @quality_control.destroy
-    flash[:notice] = 'Оценка качества успешно удалена'
+    flash[:notice] = 'ОПМ успешно удалено'
 
     redirect_to district_path(@district)
   end

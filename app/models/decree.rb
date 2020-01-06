@@ -2,7 +2,7 @@ class Decree < ApplicationRecord
   belongs_to :quality_control
   has_many :paragraphs
 
-  OPTION = ['По решение УЗО МЗРБ, ЛКС', 'По предложение МРЭК'].freeze
+  OPTION = ['По решению УЗО, МЗРБ', 'По предложение МРЭК'].freeze
 
   enum option: OPTION
 

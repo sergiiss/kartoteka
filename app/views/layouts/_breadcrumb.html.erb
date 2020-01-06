@@ -20,9 +20,9 @@
       <% if controller.class == QualityControlsController || params[:quality_control_id] %>
         <li class="breadcrumb-item">
           <% if controller.class == QualityControlsController %>
-            <span>Оценка качества</span>
+            <span>Основание проведения мониторинга</span>
           <% else %>
-            <%= link_to 'Оценка качества', district_quality_control_path(@district, @quality_control) %>
+            <%= link_to 'Основание проведения мониторинга', district_quality_control_path(@district, @quality_control) %>
           <% end %>
         </li>
       <% end %>

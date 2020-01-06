@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h3>Создать OK</h3><br />
+      <h3>Создать Основание проведения мониторинга</h3><br />
     </div>
   </div>
 
@@ -10,20 +10,20 @@
 
     <%= f.hidden_field :district_id, value: @district.id %>
     <div class="form-group row">
-      <%= f.label :name, 'Название', class: "col-sm-3 col-form-label" %>
+      <%= f.label :name, 'Название ОПМ', class: "col-sm-3 col-form-label" %>
       <div class="col-sm-4">
-        <%= f.text_field :name, class: "form-control", placeholder: 'Название' %>
+        <%= f.text_field :name, class: "form-control", placeholder: 'Название ОПМ' %>
       </div>
     </div>
     <div class="form-group row">
-      <%= f.label :decree_date, 'Дата ОК', class: "col-sm-3 col-form-label" %>
+      <%= f.label :decree_date, 'Дата ОПМ', class: "col-sm-3 col-form-label" %>
       <div class="col-sm-4">
-        <%= f.date_field :decree_date, class: "form-control", placeholder: 'Дата ОК' %>
+        <%= f.date_field :decree_date, class: "form-control", placeholder: 'Дата ОПМ' %>
       </div>
     </div>
-    <div lass="form-group row">
+    <div class="form-group row">
       <%= label_tag '', '', class: "col-sm-3 col-form-label" %>
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <%= f.submit 'Сохранить', class: 'btn btn-primary btn-lg' %>
         <%= link_to 'Назад', :back, class: 'btn btn-secondary btn-lg' %>
       </div>
